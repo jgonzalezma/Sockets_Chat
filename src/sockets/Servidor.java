@@ -4,6 +4,7 @@ import java.awt.EventQueue;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 
@@ -74,13 +75,16 @@ public class Servidor implements Runnable{
 					mensaje = paquete_recibido.getMensaje();
 					
 					textArea.append("\n" + nick + ": " + mensaje + " para " + ip);
+					
+					Socket envia_destinatario = new Socket(ip, 9090);
+					ObjectOutputStream paqueteReenvio = new ObjectOutputStream(envia_destinatario.getOutputStream());
+					paqueteReenvio.writeObject(paquete_recibido);
+					envia_destinatario.close();
 					socket.close();
 				}
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			} catch (ClassNotFoundException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			

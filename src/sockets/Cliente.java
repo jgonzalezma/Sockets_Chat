@@ -7,14 +7,16 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.net.ServerSocket;
 import java.net.Socket;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextArea;
 import javax.swing.JLabel;
 import java.awt.Font;
 
-public class Cliente {
+public class Cliente implements Runnable{
 
 	private JFrame frame;
 	private JTextField txtField_mensaje;
@@ -109,5 +111,29 @@ public class Cliente {
 		JLabel lblIpDestino = new JLabel("IP destino:");
 		lblIpDestino.setBounds(258, 11, 86, 14);
 		frame.getContentPane().add(lblIpDestino);
+		
+		Thread hilo = new Thread(this);
+		hilo.start();
+	}
+
+	@Override
+	public void run() {
+		try {
+			ServerSocket servidor_cliente = new ServerSocket(9090);
+			Socket cliente;
+			PaqueteEnvio paqueteRecibido;
+			
+			while(true) {
+				cliente = servidor_cliente.accept();
+				ObjectInputStream flujo_entrada = new ObjectInputStream(cliente.getInputStream());
+				paqueteRecibido = (PaqueteEnvio) flujo_entrada.readObject();
+				textArea_mensajes.append("\n" + paqueteRecibido.getNick() + ": " + paqueteRecibido.getMensaje());
+				
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
 	}
 }
