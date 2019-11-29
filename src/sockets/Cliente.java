@@ -8,9 +8,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
-import java.io.Serializable;
 import java.net.Socket;
-import java.net.UnknownHostException;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextArea;
 import javax.swing.JLabel;
@@ -75,17 +73,13 @@ public class Cliente {
 					ObjectOutputStream paquete_datos = new ObjectOutputStream(socket.getOutputStream());
 					paquete_datos.writeObject(datos);
 					socket.close();
-					
-					/* DataOutputStream flujo_salida = new DataOutputStream(socket.getOutputStream());
-					
-					flujo_salida.writeUTF(txtField_mensaje.getText());
-					flujo_salida.close(); */
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 			}
 		});
+		
 		btnEnviar.setBounds(175, 83, 89, 23);
 		frame.getContentPane().add(btnEnviar);
 		
@@ -115,33 +109,5 @@ public class Cliente {
 		JLabel lblIpDestino = new JLabel("IP destino:");
 		lblIpDestino.setBounds(258, 11, 86, 14);
 		frame.getContentPane().add(lblIpDestino);
-	}
-	
-	class PaqueteEnvio implements Serializable{
-		private String nick, ip, mensaje;
-
-		public String getNick() {
-			return nick;
-		}
-
-		public void setNick(String nick) {
-			this.nick = nick;
-		}
-
-		public String getIp() {
-			return ip;
-		}
-
-		public void setIp(String ip) {
-			this.ip = ip;
-		}
-
-		public String getMensaje() {
-			return mensaje;
-		}
-
-		public void setMensaje(String mensaje) {
-			this.mensaje = mensaje;
-		}
 	}
 }

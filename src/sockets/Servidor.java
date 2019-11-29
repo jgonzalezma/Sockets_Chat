@@ -10,7 +10,7 @@ import java.net.Socket;
 import javax.swing.JFrame;
 import javax.swing.JTextArea;
 
-import sockets.Cliente.PaqueteEnvio;
+import sockets.PaqueteEnvio;
 
 public class Servidor implements Runnable{
 
