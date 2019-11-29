@@ -79,6 +79,7 @@ public class Servidor implements Runnable{
 					Socket envia_destinatario = new Socket(ip, 9090);
 					ObjectOutputStream paqueteReenvio = new ObjectOutputStream(envia_destinatario.getOutputStream());
 					paqueteReenvio.writeObject(paquete_recibido);
+					paqueteReenvio.close();
 					envia_destinatario.close();
 					socket.close();
 				}
