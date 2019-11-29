@@ -59,12 +59,13 @@ public class Servidor implements Runnable{
 	public void run() {
 		try {
 			ServerSocket servidor = new ServerSocket(9999);
-			Socket socket = servidor.accept();
-			DataInputStream flujo_entrada = new DataInputStream(socket.getInputStream());
-			String mensaje_texto = flujo_entrada.readUTF();
-			textArea.append("\n" + mensaje_texto);
-			socket.close();
-			
+			while(true) {
+				Socket socket = servidor.accept();
+				DataInputStream flujo_entrada = new DataInputStream(socket.getInputStream());
+				String mensaje_texto = flujo_entrada.readUTF();
+				textArea.append("\n" + mensaje_texto);
+				socket.close();
+			}		
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
