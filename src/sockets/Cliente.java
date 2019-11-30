@@ -88,6 +88,7 @@ public class Cliente implements Runnable{
 		
 		textArea_mensajes = new JTextArea();
 		textArea_mensajes.setBounds(86, 117, 258, 133);
+		textArea_mensajes.setEditable(false);
 		frame.getContentPane().add(textArea_mensajes);
 		
 		JLabel lblChat = new JLabel("Chat");

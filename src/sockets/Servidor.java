@@ -51,6 +51,7 @@ public class Servidor implements Runnable{
 		frame.getContentPane().setLayout(null);
 		
 		textArea = new JTextArea();
+		textArea.setEditable(false);
 		textArea.setBounds(10, 11, 414, 250);
 		frame.getContentPane().add(textArea);
 		
