@@ -64,6 +64,7 @@ public class Cliente implements Runnable{
 		JButton btnEnviar = new JButton("Enviar");
 		btnEnviar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				textArea_mensajes.append("\nYo:" + txtField_mensaje.getText());
 				try {
 					Socket socket = new Socket("192.168.1.37", 9999);
 					PaqueteEnvio datos = new PaqueteEnvio();
