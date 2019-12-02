@@ -68,7 +68,6 @@ public class Cliente implements Runnable{
 				try {
 					Socket socket = new Socket("192.168.1.37", 9999);
 					PaqueteEnvio datos = new PaqueteEnvio();
-					
 					datos.setNick(txtField_nick.getText());
 					datos.setIp(txtField_destino.getText());
 					datos.setMensaje(txtField_mensaje.getText());
