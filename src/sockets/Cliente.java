@@ -77,7 +77,6 @@ public class Cliente implements Runnable{
 					paquete_datos.writeObject(datos);
 					socket.close();
 				} catch (IOException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 			}
