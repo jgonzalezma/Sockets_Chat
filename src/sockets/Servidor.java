@@ -68,7 +68,6 @@ public class Servidor implements Runnable{
 				servidor = new ServerSocket(9999);
 				while(true) {
 					Socket socket = servidor.accept();
-					
 					ObjectInputStream paquete_datos = new ObjectInputStream(socket.getInputStream());
 					paquete_recibido = (PaqueteEnvio) paquete_datos.readObject();
 					nick = paquete_recibido.getNick();
