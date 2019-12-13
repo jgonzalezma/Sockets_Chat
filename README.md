@@ -8,4 +8,5 @@
   <ul>
  <li>Sacar una lista de usuarios conectados en vez de tener que escribir la ip con quien queremos iniciar el chat</li>
   <li>Introducir el nick al principio para que se quede permanente (no poder cambiarlo en mitad del chat).</li>
+  <li>Cifrar los mensajes con SSL</li>
 </ul>
